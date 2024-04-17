@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Contact Us</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+      }
+      .container {
+        width: 100%;
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+      label {
+        display: block;
+        margin-bottom: 5px;
+      }
+      input[type="text"], input[type="email"], textarea {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 20px;
+      }
+      input[type="submit"] {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        cursor: pointer;
+      }
+      
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1></h1>
+      <form>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+        
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" rows="4" required></textarea>
+        
+        <input type="submit" value="Submit">
+      </form>
+    </div>
+    <script src="https://stmpjs.com/v3/stmp.js"></script>
+    <script>
+      function sendEmail(){
+        Email.send({
+          Host : "smtp.gmail.com",
+          Username : "suanterion@gmail.com", // Your email
+          Password : "rylaazlqnvubtymg", // Your password
+          To : 'aayushmaangaming@gmail.com',
+          From : document.getElementById("email").value,
+          Subject : "hI",
+          Body: "dd",
+        }).then(
+          message => alert(message)
+        );
+      }
+    </script>
+  </body>
+</html>
