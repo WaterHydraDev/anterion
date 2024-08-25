@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anterion Products</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="/html/terms.html">Terms & Policy</a></li>
+                    <li><a href="/html/faq.html">FAQ</a></li>
+                    <li><a href="/html/contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <div id="search-container" class="searchBar">
+        <input type="text" id="searchBar" placeholder="Search products...">
+        <select id="filter">
+            <option value="a-z">A-Z</option>
+            <option value="z-a">Z-A</option>
+            <option value="lowest">Price: Low to High</option>
+            <option value="highest">Price: High to Low</option>
+            <option value="minmax">Price Range</option>
+        </select>
+        <input type="number" id="minPrice" placeholder="Min Price" style="display:none;">
+        <input type="number" id="maxPrice" placeholder="Max Price" style="display:none;">
+    </div>
+    
+    <div id="root">
+        <!-- Products will be dynamically inserted here -->
+    </div>
+    
+    <script src="script.js"></script>
+    
+    </body>
+    </html>

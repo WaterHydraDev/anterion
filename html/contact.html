@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Anterion</title>
+    <style>
+        body {
+            background-color: #f0f0f0; /* Background color for the entire page */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Full viewport height */
+            margin: 0;
+        }
+
+        .container {
+            background-color: #ffffff; /* Background color for the container */
+            padding: 20px;
+            border-radius: 15px; /* Rounded corners */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Box shadow for depth */
+            max-width: 400px; /* Maximum width of the container */
+            width: 100%;
+        }
+
+        .form {
+            width: 250px;
+            height: 300px;
+            margin: 50px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        form input, form button {
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        form button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        form button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <form method="post" name="form" class="form">
+        Email <input type="email" name="email" required> <br>
+        Subject <input type="text" name="subject" required> <br>
+        Message <input type="text" name="message" required> <br>
+        <button type="submit" id="submit-button">Send</button>
+    </form>
+
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbx4Y--GVbzzS0gGzceEyOKuOR3r5hpJMF8M-5oqo9pwyIkzChYzRGjrs9lpfxbv6A9x/exec';
+        const form = document.forms['form'];
+        const submitButton = document.getElementById('submit-button');
+
+        form.addEventListener('submit', e => {
+            e.preventDefault();
+            submitButton.disabled = true; // Disable the submit button
+
+            fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+                .then(response => {
+                    localStorage.setItem('formSubmissionMessage', 'Thank You For Submitting The Form. We Will Try To Reply To You As Soon As Possible Via Email.');
+                    form.reset(); // Clear the input fields
+                    window.location.href = '../index.html'; // Redirect to index.html after successful submission
+                })
+                .catch(error => {
+                    console.error('Error occurred!', error.message);
+                    submitButton.disabled = false; // Re-enable the submit button if there is an error
+                });
+        });
+    </script>
+</body>
+</html>
